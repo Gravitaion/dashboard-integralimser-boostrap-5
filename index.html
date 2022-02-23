@@ -26,7 +26,7 @@
                     <ul class="nav d-flex flex-column gap-3 p-3">
                         <li class="nav-item listItemModule">
                             <div class="d-flex">
-                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed rightArrow"
+                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed"
                                     data-bs-toggle="collapse"
                                     href="#collapseMenu1"
                                     role="button"
@@ -40,14 +40,14 @@
                                 </a>
                             </div>
                             <div class="collapse" id="collapseMenu1">
-                                <div class="card card-body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque tempore consequatur dolore harum ut, hic error, labore corrupti placeat non. Libero sunt eum laudantium. Sit minus reprehenderit officiis amet!
-                                </div>
+                                <ul class="nav">
+                                    <!-- <li class="nav-item"></li> -->
+                                </ul>
                             </div>
                         </li>
                         <li class="nav-item listItemModule">
                             <div class="d-flex">
-                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed rightArrow"
+                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed"
                                     data-bs-toggle="collapse"
                                     href="#collapseMenu2"
                                     role="button"
@@ -75,21 +75,29 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery_3_6_0.min.js"></script>
     <script>
-        $('.menuModule').click( (e) => {
+        $('.menuModule').click( async (e) => {
             const $this = $(e.currentTarget);
-    
             $('.listItemModule').each( ( index, item ) => {
-                $(item).children('downArrow').addClass('rightArrow');
-                $(item).children('downArrow').removeClass('downArrow');
+                const menuModule = $(item).find('.menuModule');
+                $this.attr('href') !== menuModule.attr('href')
+                    ? anotherCollapsed( menuModule )
+                    : selfCollapsed( $this );
                 $(item).children('.collapse').removeClass('show');
             });
-            
-            if( !$this.hasClass('collapsed') ) {
-                $this.addClass('downArrow');
-                $this.removeClass('rightArrow');
-            }
-            
         });
+
+        const selfCollapsed = ( $this ) => {
+            !$this.hasClass('collapsed') 
+                ? $this.removeClass('collapsed')
+                : $this.addClass('collapsed');
+        }
+
+        const anotherCollapsed = ( menuModule ) => {
+            if( !menuModule.hasClass('collapsed') ) {
+                menuModule.addClass('collapsed');
+                menuModule.attr('aria-expanded', 'false');
+            }
+        }
     </script>
 </body>
 </html>

@@ -17,11 +17,20 @@ a {
     transition: transform 0.2s ease-in;
 } */
 
-.rightArrow > i {
+/* .rightArrow > i {
     transition: transform 0.2s ease-in;
 }
 
 .downArrow > i{
     transform: rotate(90deg);
+    transition: transform 0.2s ease-in;
+} */
+
+.menuModule:not(.collapsed) > i {
+    transition: transform 0.2s ease-in;
+    transform: rotate(90deg);
+}
+
+.menuModule.collapsed > i {
     transition: transform 0.2s ease-in;
 }
