@@ -1,6 +1,12 @@
+
+:root {
+    --sidebar-color: rgba(255, 255, 255, 0.5);
+    --sidebar-color-active: white;
+}
+
 body {
     background: #f2f2f2;
-    font-size: 16px;
+    /* font-size: 16px; */
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -8,29 +14,43 @@ a {
     text-decoration: none;
 }
 
-/* .menuModule > i {
-    transition: transform 0.2s ease-in;
+.menuModule.collapsed {
+    color: var(--sidebar-color);
 }
 
-.menuModule:target > i {
-    transform: rotate(90deg);
-    transition: transform 0.2s ease-in;
-} */
-
-/* .rightArrow > i {
-    transition: transform 0.2s ease-in;
+.menuModule:not(.collapsed) {
+    color: white;
 }
 
-.downArrow > i{
-    transform: rotate(90deg);
-    transition: transform 0.2s ease-in;
-} */
-
-.menuModule:not(.collapsed) > i {
+.menuModule:not(.collapsed) > .menuArrow {
     transition: transform 0.2s ease-in;
     transform: rotate(90deg);
 }
 
-.menuModule.collapsed > i {
+.menuModule.collapsed > .menuArrow {
     transition: transform 0.2s ease-in;
+}
+
+.subModuleLink {
+    color: var(--sidebar-color);
+}
+
+.subModuleLink:hover {
+    color: var(--sidebar-color-active);
+}
+
+.subModuleLink:focus {
+    color: var(--sidebar-color-active);
+}
+
+.subModuleLinkActive {
+    color: var(--sidebar-color-active);
+}
+
+.subModuleLinkActive:hover {
+    color: var(--sidebar-color-active);
+}
+
+.subModuleLinkActive:focus {
+    color: var(--sidebar-color-active);
 }

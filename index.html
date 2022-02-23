@@ -17,55 +17,57 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-2 bg-dark">
-                <div class="d-flex flex-column min-vh-100" id="menuDashboard">
+                <div class="d-flex flex-column min-vh-100 px-3" id="sideBar">
                     <!-- Logo -->
                     <a href="/" class="text-white py-3">Logo</a>
-                    <hr class="text-white m-0">
+                    <hr class="text-white m-0 mb-3">
 
                     <!-- Modules -->
-                    <ul class="nav d-flex flex-column gap-3 p-3">
+                    <small class="text-white-50">NAVIGATION</small>
+                    <ul class="nav d-flex flex-column gap-3 py-3">
                         <li class="nav-item listItemModule">
-                            <div class="d-flex">
-                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed"
-                                    data-bs-toggle="collapse"
-                                    href="#collapseMenu1"
-                                    role="button"
-                                    aria-expanded="false"
-                                    aria-controls="collapseMenu1"
-                                >
-                                    <h5 class="m-0 d-inline-block">
-                                        Menu #1
-                                    </h5>
-                                    <i class="fa-solid fa-angle-right text-white "></i>
-                                </a>
-                            </div>
+                            <a class="menuModule w-100 d-flex align-items-center collapsed"
+                                data-bs-toggle="collapse"
+                                href="#collapseMenu1"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseMenu1"
+                            >
+                                <i class="fa-regular fa-calendar"></i>
+                                <p class="m-0 d-inline-block h6 ms-3">Calendario</p>
+                                <i class="fa-solid fa-angle-right ms-auto menuArrow"></i>
+                            </a>
                             <div class="collapse" id="collapseMenu1">
-                                <ul class="nav">
-                                    <!-- <li class="nav-item"></li> -->
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link subModuleLink">Link #1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link subModuleLink">Link #2</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item listItemModule">
-                            <div class="d-flex">
-                                <a class="menuModule text-white w-100 d-flex justify-content-between align-items-center collapsed"
-                                    data-bs-toggle="collapse"
-                                    href="#collapseMenu2"
-                                    role="button"
-                                    aria-expanded="false"
-                                    aria-controls="collapseMenu2"
-                                >
-                                    <h5 class="m-0 d-inline-block">
-                                        Menu #2
-                                    </h5>
-                                    <i class="fa-solid fa-angle-right text-white rightArrow"></i>
-                                </a>
-                            </div>
+                            <a class="menuModule w-100 d-flex align-items-center collapsed"
+                                data-bs-toggle="collapse"
+                                href="#collapseMenu2"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseMenu2"
+                            >
+                                <i class="fa-regular fa-comments"></i>
+                                <p class="m-0 d-inline-block h6 ms-3">Chat</p>
+                                <i class="fa-solid fa-angle-right ms-auto menuArrow"></i>
+                            </a>
                             <div class="collapse" id="collapseMenu2">
-                                <div class="card card-body">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque tempore consequatur dolore harum ut, hic error, labore corrupti placeat non. Libero sunt eum laudantium. Sit minus reprehenderit officiis amet!
-                                </div>
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link subModuleLink">Link #1</a>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
+                        </li>              
                     </ul>
                 </div>
             </div>
@@ -75,7 +77,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery_3_6_0.min.js"></script>
     <script>
-        $('.menuModule').click( async (e) => {
+        $('.menuModule').click((e) => {
             const $this = $(e.currentTarget);
             $('.listItemModule').each( ( index, item ) => {
                 const menuModule = $(item).find('.menuModule');
@@ -84,6 +86,17 @@
                     : selfCollapsed( $this );
                 $(item).children('.collapse').removeClass('show');
             });
+        });
+
+        $('.subModuleLink').click( ({ currentTarget }) => {
+            console.log('submodulelink')
+            const $this = $(currentTarget);
+            $('.subModuleLinkActive').each(( index, item ) =>  {
+                $(item).removeClass('subModuleLinkActive');
+                $(item).addClass('subModuleLink');
+            });
+            $this.removeClass('subModuleLink');
+            $this.addClass('subModuleLinkActive');
         });
 
         const selfCollapsed = ( $this ) => {
