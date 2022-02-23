@@ -8,16 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-2 bg-dark">
-                <div class="d-flex flex-column min-vh-100 px-3" id="sideBar">
+            <div class="col-lg-2 col-md-3 col-sm-2 col-2 bg-dark px-0 px-md-3">
+                <div class="d-flex flex-column min-vh-100 px-md-3 px-0" id="sideBar">
                     <!-- Logo -->
                     <a href="/" class="text-white py-3">Logo</a>
                     <hr class="text-white m-0 mb-3">
@@ -25,7 +25,22 @@
                     <!-- Modules -->
                     <small class="text-white-50">NAVIGATION</small>
                     <ul class="nav d-flex flex-column gap-3 py-3">
-                        <li class="nav-item listItemModule">
+                        <li class="nav-item d-md-none d-flex justify-content-center dropdown dropend">
+                            <a href="#" 
+                                class="nav-link fa-regular fa-calendar menuModuleIcon"
+                                type="button" 
+                                id="dropdownMenu1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenu1">
+                                <li><h6 class="dropdown-header">Calendario</h6></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a href="#" class="dropdown-item">Link #1</a></li>
+                                <li><a href="#" class="dropdown-item">Link #2</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item listItemModule d-md-block d-none">
                             <a class="menuModule w-100 d-flex align-items-center collapsed"
                                 data-bs-toggle="collapse"
                                 href="#collapseMenu1"
@@ -48,7 +63,20 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item listItemModule">
+                        <li class="nav-item d-md-none d-flex justify-content-center dropdown dropend">
+                            <a href="#" 
+                                class="nav-link fa-regular fa-comments menuModuleIcon"
+                                type="button" 
+                                id="dropdownMenu1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenu1">
+                                <li><h6 class="dropdown-header">Chat</h6></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a href="#" class="dropdown-item">Link #1</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item listItemModule d-md-block d-none">
                             <a class="menuModule w-100 d-flex align-items-center collapsed"
                                 data-bs-toggle="collapse"
                                 href="#collapseMenu2"
@@ -74,8 +102,8 @@
         </div>
     </div>
 
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery_3_6_0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
         $('.menuModule').click((e) => {
             const $this = $(e.currentTarget);
@@ -89,7 +117,6 @@
         });
 
         $('.subModuleLink').click( ({ currentTarget }) => {
-            console.log('submodulelink')
             const $this = $(currentTarget);
             $('.subModuleLinkActive').each(( index, item ) =>  {
                 $(item).removeClass('subModuleLinkActive');

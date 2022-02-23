@@ -19,7 +19,38 @@ a {
 }
 
 .menuModule:not(.collapsed) {
-    color: white;
+    color: var(--sidebar-color-active);
+}
+
+.menuModuleIcon {
+    color: var(--sidebar-color);
+}
+
+.menuModuleIcon:focus {
+    color: var(--sidebar-color-active);
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 80%;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+}
+
+.menuModuleIcon:active {
+    color: var(--sidebar-color-active);
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 80%;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+}
+
+.menuModuleIcon:hover {
+    color: var(--sidebar-color-active);
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 80%;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px; 
 }
 
 .menuModule:not(.collapsed) > .menuArrow {
